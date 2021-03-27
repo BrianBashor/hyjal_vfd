@@ -1,0 +1,85 @@
+
+# str(name) str(server) str(b_tag) bool(main) bool(raid_lead)
+# make sure to run `init_guild_members.py` after updating this file.
+
+# opps
+opprobiosus aerie-peak opps True False
+opprobriums aerie-peak opps False False
+opprobrious aerie-peak opps False False
+opprobrioum aerie-peak opps False False
+opprobeness aerie-peak opps False False
+
+# theory 
+ganktheory aerie-peak theory False True
+Metatheory aerie-peak theory True True
+
+# howland
+howland aerie-peak howland True True
+paxter aerie-peak howland False True
+
+# galv
+galvanid aerie-peak galv True True
+
+# shark
+merikhi aerie-peak shark True False
+Zanzoor aerie-peak shark True False
+
+# rathen
+rathen aerie-peak rathen True False
+
+# kard
+kardinal aerie-peak kard True False
+
+# radella
+zolstar aerie-peak radella False True
+radella aerie-peak radella True False
+
+# jaydah
+jaydah aerie-peak jaydah True False
+
+# keri
+keri aerie-peak keri True False
+
+# icy
+icylok aerie-peak icy False False
+icylíght aerie-peak icy False False 
+icyknight aerie-peak icy True False 
+
+# nibbs
+nìbbs aerie-peak nibbs False False
+nibbsy aerie-peak nibbs True False 
+
+# dave
+davoth the-forgotten-coast dave True False
+
+# marcos
+märcös aerie-peak marcos True False
+
+# jet
+jetdin aerie-peak jet True Fals
+
+# intince
+intince aerie-peak intince False False
+intence aerie-peak intince True False
+
+# epic 
+Epìc aerie-peak epic True False
+
+# dk
+deathkitten aerie-peak dk True False
+
+# kal
+Chicknorrís aerie-peak kal False False
+Dalinâr aerie-peak kal True False
+
+# tequila
+Tequílá aerie-peak tequila True False
+
+# arcino
+Figjam aerie-peak arcino True False
+
+# lorianne
+lorianne aerie-peak lorianne True False
+
+# shadow
+shadowness aerie-peak shadow True False
