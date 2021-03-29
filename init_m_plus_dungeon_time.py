@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" load current m + dungeon times """
+# load current m + dungeon times
 
 import pymongo
 from blizzard import Blizzard
