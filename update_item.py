@@ -30,7 +30,7 @@ for item in ah_item_id:
         asset["media"] = save_location
 
         urllib.request.urlretrieve(item_media, save_location)
-        
+
         item_collection.insert_one(asset)
 
 print("Done!")
