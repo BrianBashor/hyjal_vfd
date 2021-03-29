@@ -13,6 +13,8 @@ collection = db["m_plus_dungeon_time"]
 
 dungeon_indexes = blizzard.game_mythic_keystone_dungeons_index()
 
+collection.delete_many({})
+
 for dungeon_index in dungeon_indexes["dungeons"]:
     insert_me = {}
     dungeon_times = blizzard.game_mythic_keystone_dungeons(dungeon_index["id"])
