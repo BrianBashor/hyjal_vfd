@@ -28,14 +28,12 @@ for ah_item in ah_item_id:
         item_media = insert_me["media"]["key"]["href"]
         item_media = blizzard.generic_call(item_media)
         item_media = item_media["assets"][0]["value"]
-        time.sleep(1)
 
         urllib.request.urlretrieve(item_media, "/tmp/delete_me.jpg")
         with open("/tmp/delete_me.jpg", 'rb') as img:
             insert_me["media"] = img.read()
         os.remove("/tmp/delete_me.jpg")
         item_collection.insert_one(insert_me)
-        time.sleep(1)
         
         print("{} Items remaining".format(n_of_item_to_insert))
         n_of_item_to_insert -= 1
