@@ -37,6 +37,7 @@ with open('guild_members.txt', 'r') as f:
                 insert_me["covenant"] = character_profile["covenant_progress"]["chosen_covenant"]["name"]
                 insert_me["renown"] = character_profile["covenant_progress"]["renown_level"]
 
+            print("Inserting: {}".format(insert_me["name"]))
             collection.insert_one(insert_me)
 
 print("Done!")
