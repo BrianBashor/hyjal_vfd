@@ -12,5 +12,5 @@ collection = db["auction_house"]
 
 for item in ah_data["auctions"]:
     collection.insert_one(item)
-    
+
 print("Done!")
