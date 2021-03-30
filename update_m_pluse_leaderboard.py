@@ -34,7 +34,7 @@ for period in range(start_period, current_period + 1):
         else:
             try:
                 if insert_me["leading_groups"]:
-                    print("Writing for peroid {} : {}".format(period, dungeon_index["name"],))
+                    print("Writing for peroid {} : {}".format(period, dungeon_index["name"]))
                     collection.insert_one(insert_me)
             except Exception as e:
                 print("No data for peroid {} : {}".format(period, dungeon_index["name"]))
