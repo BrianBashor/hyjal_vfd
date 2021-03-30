@@ -11,7 +11,7 @@ blizzard = Blizzard()
 if platform.system() == "Darwin":
     IMG_PATH = "/Users/{}/Documents/mongo/hyjal_vfd/item_media/".format(os.environ["USER"])
 else:
-    IMG_PATH = "/home/{}/Pictures".format(os.environ["USER"])
+    IMG_PATH = "/home/{}/Pictures/".format(os.environ["USER"])
 
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["hyjal"]
