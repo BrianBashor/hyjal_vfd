@@ -6,6 +6,7 @@
 import os
 import urllib
 import pymongo
+import platform
 from blizzard import Blizzard
 
 blizzard = Blizzard()
@@ -13,6 +14,15 @@ blizzard = Blizzard()
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["hyjal"]
 collection = db["class_info"]
+
+collection.delete_many({})
+
+if platform.system() == "Darwin":
+    IMG_PATH = "/Users/{}/Documents/mongo/hyjal_vfd/class_media/".format(os.environ["USER"])
+elif platform.system() == "Linux":
+    IMG_PATH = "/home/{}/Pictures/class_media/".format(os.environ["USER"])
+if not os.path.isdir(IMG_PATH):
+    os.mkdir(IMG_PATH)
 
 spec_type = {
     62: "range",
@@ -68,8 +78,6 @@ class_color = {
     "priest": "#FFFFFF"
 }
 
-collection.delete_many({})
-
 character_specializations = blizzard.game_playable_specialization_index()
 class_indexes = blizzard.game_playable_class_index()
 
@@ -79,15 +87,13 @@ for class_index in class_indexes["classes"]:
         "class_name": current_class["name"],
         "class_id": current_class["id"],
         "class_color": class_color[current_class["name"].lower()],
+        "class_media": IMG_PATH + current_class["name"] + ".jpg"
     }
     
     class_media = blizzard.game_playable_class_media(current_class["id"])
     class_media = class_media["assets"][0]["value"]
-    # @TODO don't write the image to disk, just put it in the db
-    urllib.request.urlretrieve(class_media, "/tmp/" + "delete_me.jpg")
-    with open("/tmp/delete_me.jpg", 'rb') as img:
-        class_dict["class_media"] = img.read()
-    os.remove("/tmp/delete_me.jpg")
+
+    urllib.request.urlretrieve(class_media, IMG_PATH + current_class["name"] + ".jpg")
     
     specializations = []
     for specialization in current_class["specializations"]:
@@ -97,17 +103,15 @@ for class_index in class_indexes["classes"]:
             "specialization_name": current_specialization["name"],
             "specialization_id ": current_specialization["id"],
             "role": current_specialization["role"]["name"],
-            "type": spec_type[current_specialization["id"]]
+            "type": spec_type[current_specialization["id"]],
+            "spec_media": IMG_PATH + current_specialization["name"] + ".jpg"
         }
 
         spec_media = current_specialization["media"]["key"]["href"]
         spec_media = blizzard.generic_call(spec_media)
         spec_media = spec_media["assets"][0]["value"]
-        urllib.request.urlretrieve(spec_media, "/tmp/delete_me.jpg")
-        with open("/tmp/delete_me.jpg", 'rb') as img:
-            spec_dict["specialization_media"] = img.read()
-        os.remove("/tmp/delete_me.jpg")
-        
+        urllib.request.urlretrieve(spec_media, IMG_PATH + spec_dict["specialization_name"] + ".jpg")
+
         specializations.append(spec_dict)
 
     class_dict["specialization"] = specializations

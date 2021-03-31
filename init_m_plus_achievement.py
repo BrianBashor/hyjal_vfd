@@ -29,7 +29,6 @@ for guild_member in guild_members.find({}):
     if guild_member["b_tag"] not in found_b_tags:
         found_b_tags.append(guild_member["b_tag"])
 
-# @TODO add asyncio to speed things up
 for b_tag in found_b_tags:
     dungeon_results = {}
     for k in dungeon_time.keys():

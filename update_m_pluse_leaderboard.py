@@ -26,7 +26,6 @@ for period in range(start_period, current_period + 1):
     for dungeon_index in dungeon_indexes:
         insert_me = blizzard.game_mythic_keystone_leaderboard(dungeon_index["id"], period) 
         if collection.find_one({"period": period, "map_challenge_mode_id": dungeon_index["id"]}):
-            print("Replacing for peroid {} : {}".format( period, dungeon_index["name"],))
             collection.replace_one({
                 "period": period,
                 "map_challenge_mode_id": dungeon_index
@@ -34,9 +33,8 @@ for period in range(start_period, current_period + 1):
         else:
             try:
                 if insert_me["leading_groups"]:
-                    print("Writing for peroid {} : {}".format(period, dungeon_index["name"]))
                     collection.insert_one(insert_me)
             except Exception as e:
-                print("No data for peroid {} : {}".format(period, dungeon_index["name"]))
+                pass
 
 print("Done!")

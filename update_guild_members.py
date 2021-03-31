@@ -31,6 +31,7 @@ with open('guild_members.txt', 'r') as f:
             "class_name": character_profile["character_class"]["name"],
             "class_id": character_profile["character_class"]["id"],
             "level": character_profile["level"],
+            "item_level": character_profile["equipped_item_level"]
             }
 
             if "covenant_progress" in character_profile.keys():
