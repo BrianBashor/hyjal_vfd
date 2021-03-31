@@ -20,9 +20,9 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('#m_plus_stats'):
+    if message.content.startswith('#plus15'):
         target_player = message.content.split(' ')[1]
-        player = db["guild_members"].find_one({"name": target_player})
+        player = db["guild_members"].find_one({"name": target_player.lower()})
         results = db["m_plus_achievement"].find_one({"name": player["b_tag"]})
         send_me = target_player + " ( " + player["b_tag"] + " )\n"
         send_me += "-" * 27
@@ -38,5 +38,7 @@ async def on_message(message):
             send_me += '\n'
 
         await message.channel.send(" ```" + send_me + "```")
+    else:
+        await message.channel.send("Did not find {}".format(message.content.split(' ')[1]))
 
 client.run(TOKEN)
