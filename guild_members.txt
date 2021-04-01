@@ -22,7 +22,8 @@ galvanid aerie-peak galv True True
 
 # shark
 merikhi aerie-peak shark True False
-Zanzoor aerie-peak shark True False
+Zanzoor aerie-peak shark False False
+atish aerie-peak shark False False
 
 # rathen
 rathen aerie-peak rathen True False
@@ -76,7 +77,8 @@ Dalinâr aerie-peak kal True False
 Tequílá aerie-peak tequila True False
 
 # arcino
-Figjam aerie-peak arcino True False
+Figjam aerie-peak arkino False False
+Onikra aerie-peak arkino True False
 
 # lorianne
 lorianne aerie-peak lorianne True False
