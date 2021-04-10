@@ -16,7 +16,7 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["hyjal"]
 collection = db["m_plus_season_" + str(current_season)]
 
-if collection.count_documents({}) == 0:
+if collection.count({}) == 0:
     start_period = season_periods[0]["id"]
 else:
     start_period = collection.find_one(sort=[("period", pymongo.DESCENDING)])
@@ -26,6 +26,7 @@ for period in range(start_period, current_period + 1):
     for dungeon_index in dungeon_indexes:
         insert_me = blizzard.game_mythic_keystone_leaderboard(dungeon_index["id"], period) 
         if collection.find_one({"period": period, "map_challenge_mode_id": dungeon_index["id"]}):
+            print("replacing {} : {}".format(period, dungeon_index["name"]))
             collection.replace_one({
                 "period": period,
                 "map_challenge_mode_id": dungeon_index
@@ -35,6 +36,4 @@ for period in range(start_period, current_period + 1):
                 if insert_me["leading_groups"]:
                     collection.insert_one(insert_me)
             except Exception as e:
-                pass
-
-print("Done!")
+                print("nothing found for {} : {}".format(period, dungeon_index["name"]))

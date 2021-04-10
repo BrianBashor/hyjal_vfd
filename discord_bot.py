@@ -32,9 +32,9 @@ async def on_message(message):
             send_me += " " * (22 - len(dungeon))
             send_me += " | "
             if results["dungeons"][dungeon]:
-                send_me += "\U0001F600"
+                send_me += "\U00002705"
             else:
-                send_me += "\U0001F97A"
+                send_me += "\U0000274C"
             send_me += '\n'
 
         await message.channel.send(" ```" + send_me + "```")

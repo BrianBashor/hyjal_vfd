@@ -1,5 +1,2 @@
-/md
-/tmp
-/site
-/fonts
+/__pycache__
 /.vscode

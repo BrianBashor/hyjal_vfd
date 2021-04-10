@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# load player info from player_list.txt into the hyjal db
-# additional profile information is added such as class and race.
-
 import re
 import pymongo
 from blizzard import Blizzard
@@ -40,5 +37,3 @@ with open('guild_members.txt', 'r') as f:
 
             print("Inserting: {}".format(insert_me["name"]))
             collection.insert_one(insert_me)
-
-print("Done!")

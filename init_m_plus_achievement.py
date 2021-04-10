@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# find what guild_members, based off btag, have compleated a +15 per dungeon
-
 import re
 import pymongo
 
@@ -46,5 +44,3 @@ for b_tag in found_b_tags:
         "name": b_tag,
         "dungeons": dungeon_results
         })
-
-print("Done!")

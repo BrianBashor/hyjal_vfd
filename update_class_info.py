@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 
-# load generic information about all classes and related spec 
-# all previous data will be deleted when this is run
-
-import os
 import urllib
 import pymongo
-import platform
 from blizzard import Blizzard
 
 blizzard = Blizzard()
@@ -17,12 +12,7 @@ collection = db["class_info"]
 
 collection.delete_many({})
 
-if platform.system() == "Darwin":
-    IMG_PATH = "/Users/{}/Documents/mongo/hyjal_vfd/class_media/".format(os.environ["USER"])
-elif platform.system() == "Linux":
-    IMG_PATH = "/home/{}/Pictures/class_media/".format(os.environ["USER"])
-if not os.path.isdir(IMG_PATH):
-    os.mkdir(IMG_PATH)
+IMG_PATH = "/mnt/disk1/class_media/"
 
 spec_type = {
     62: "range",
@@ -116,5 +106,3 @@ for class_index in class_indexes["classes"]:
 
     class_dict["specialization"] = specializations
     collection.insert_one(class_dict)
-
-print("Done!")

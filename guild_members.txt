@@ -1,5 +1,5 @@
 
-# str(name) str(server) str(b_tag) bool(main) bool(raid_lead)
+# str(name) str(server) str(discord) bool(main) bool(raid_lead)
 # make sure to run `init_guild_members.py` after updating this file.
 
 # opps
@@ -18,18 +18,18 @@ howland aerie-peak howland True True
 paxter aerie-peak howland False True
 
 # galv
-galvanid aerie-peak galv True True
+galvanid aerie-peak galvanid True True
 
 # shark
-merikhi aerie-peak shark True False
-Zanzoor aerie-peak shark False False
-atish aerie-peak shark False False
+merikhi aerie-peak merikhi True False
+Zanzoor aerie-peak merikhi False False
+atish aerie-peak merikhi False False
 
 # rathen
 rathen aerie-peak rathen True False
 
 # kard
-kardinal aerie-peak kard True False
+kardinal aerie-peak kardinal True False
 
 # radella
 zolstar aerie-peak radella False True

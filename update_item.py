@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import os
-import platform
 import urllib
 import pymongo
 from blizzard import Blizzard
@@ -13,12 +11,9 @@ db = client["hyjal"]
 collection_ah = db["auction_house"].distinct("item.id")
 collection_id = db["items"].distinct("id")
 
-if platform.system() == "Darwin":
-    IMG_PATH = "/Users/{}/Documents/mongo/hyjal_vfd/item_media/".format(os.environ["USER"])
-elif platform.system() == "Linux":
-    IMG_PATH = "/home/{}/Pictures/item_media".format(os.environ["USER"])
-if not os.path.isdir(IMG_PATH):
-    os.mkdir(IMG_PATH)
+IMG_PATH = "/mnt/disk1/item_media/"
+
+n_of_items = len(collection_ah) - len(collection_id)
 
 for item in collection_ah:
     if item not in collection_id:
@@ -31,7 +26,6 @@ for item in collection_ah:
             full_file_path = IMG_PATH + str(item) + ".jpg"
             asset["media"] = full_file_path
             urllib.request.urlretrieve(item_media, full_file_path)
-
+            print("{}: {}".format(n_of_items, asset["name"]))
             db["items"].insert_one(asset)
-
-print("Done!")
+            n_of_items -= 1
