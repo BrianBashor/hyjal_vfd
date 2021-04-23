@@ -3,6 +3,7 @@
 import os
 import pymongo
 import discord
+f
 
 TOKEN  = os.environ['DISCORD_TOKEN']
 
@@ -19,6 +20,9 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    if message.content.startswith('#plus15'):
+
 
     if message.content.startswith('#plus15'):
         target_player = message.content.split(' ')[1]

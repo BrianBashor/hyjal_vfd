@@ -12,17 +12,23 @@ blizzard = Blizzard()
 
 collection.delete_many({})
 
-with open('guild_members.txt', 'r') as f:
+with open('hyjal_vfd/guild_members.txt', 'r') as f:
     for line in f:
         if re.match('^[a-z],*', line.lower()):
             line = line.split(' ')
             character_profile = blizzard.profile_character_profile(line[0].lower(), line[1].lower())
+            
+            if line[3].lower().strip() == "true": main = True
+            else: main = False
+            if line[4].lower().strip() == "true": raid_lead = True
+            else: raid_lead = False
+
             insert_me = {
             "name": line[0].lower().strip(),
             "server": line[1].lower().strip(),
             "b_tag": line[2].lower().strip(),
-            "main": line[3].lower().strip(),
-            "raid_lead": line[4].lower().strip(),
+            "main": main,
+            "raid_lead": raid_lead,
             "gender": character_profile["gender"]["name"],
             "race": character_profile["race"]["name"],
             "class_name": character_profile["character_class"]["name"],

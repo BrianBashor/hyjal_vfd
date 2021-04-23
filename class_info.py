@@ -12,7 +12,7 @@ collection = db["class_info"]
 
 collection.delete_many({})
 
-IMG_PATH = "/mnt/disk1/class_media/"
+IMG_PATH = "/mnt/ext0/media/class/"
 
 spec_type = {
     62: "range",
@@ -88,7 +88,6 @@ for class_index in class_indexes["classes"]:
     specializations = []
     for specialization in current_class["specializations"]:
         current_specialization = blizzard.game_playable_specialization(specialization["id"])
-        
         spec_dict = {
             "specialization_name": current_specialization["name"],
             "specialization_id ": current_specialization["id"],

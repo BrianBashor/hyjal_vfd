@@ -16,7 +16,7 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["hyjal"]
 collection = db["m_plus_season_" + str(current_season)]
 
-if collection.count({}) == 0:
+if collection.count_documents({}) == 0:
     start_period = season_periods[0]["id"]
 else:
     start_period = collection.find_one(sort=[("period", pymongo.DESCENDING)])
@@ -34,6 +34,7 @@ for period in range(start_period, current_period + 1):
         else:
             try:
                 if insert_me["leading_groups"]:
+                    print("inserting {} : {}".format(period, dungeon_index["name"]))
                     collection.insert_one(insert_me)
             except Exception as e:
                 print("nothing found for {} : {}".format(period, dungeon_index["name"]))

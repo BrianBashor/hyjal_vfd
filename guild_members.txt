@@ -1,6 +1,6 @@
 
 # str(name) str(server) str(discord) bool(main) bool(raid_lead)
-# make sure to run `init_guild_members.py` after updating this file.
+# make sure to run `guild_members.py` after updating this file.
 
 # opps
 opprobiosus aerie-peak opps True False
