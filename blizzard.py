@@ -12,20 +12,17 @@ class Blizzard:
         self.access_token = json.loads(r.text)['access_token']
         
     def send_it(self, r):
-        trys = 5
-        self.api_count += 1
         if r.status_code == 200:
             return json.loads(r.text)
-        elif r.status_code == 404:
-                print("Can't connect: {}".format(r.status_code))
-                print(r.text)
         else:
-            print("Error: {}".format(r.status_code))
+            print("ERROR: {}".format(r.status_code))
             return None
 
     # Game API Call #
-    def game_mythic_keystone_season_index(self):
+    def game_mythic_keystone_season_index(self, n=5):
         r = requests.get("https://us.api.blizzard.com/data/wow/mythic-keystone/season/index?namespace=dynamic-us&locale=en_US&access_token={}".format(self.access_token))
+        if r.status_code != 200 and n > 0:
+            self.game_mythic_keystone_season_index(n - 1)
         return self.send_it(r)
 
     def game_professions_index(self):
@@ -92,7 +89,7 @@ class Blizzard:
         r = requests.get("https://us.api.blizzard.com/profile/wow/character/{}/{}/professions?namespace=profile-us&locale=en_US&access_token={}".format(server, name, self.access_token))
         return self.send_it(r)
 
-    def profile_character_profile(self, name, server):
+    def profile_character_profile(self, name, server, n=5):
         r = requests.get("https://us.api.blizzard.com/profile/wow/character/{}/{}?namespace=profile-us&locale=en_US&access_token={}".format(server, name, self.access_token))
         return self.send_it(r)
 
