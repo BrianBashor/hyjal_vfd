@@ -85,3 +85,6 @@ lorianne aerie-peak lorianne True False
 
 # shadow
 shadowness aerie-peak shadow True False
+
+# zanny
+zantheus aerie-peak zanny True False
