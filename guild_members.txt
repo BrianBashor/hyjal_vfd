@@ -3,11 +3,11 @@
 # make sure to run `guild_members.py` after updating this file.
 
 # opps
-opprobiosus aerie-peak opps True False
-opprobriums aerie-peak opps False False
-opprobrious aerie-peak opps False False
-opprobrioum aerie-peak opps False False
-opprobeness aerie-peak opps False False
+Opprobiosus aerie-peak opps True False
+Opprobriums aerie-peak opps False False
+Opprobrious aerie-peak opps False False
+Opprobrioum aerie-peak opps False False
+Opprobeness aerie-peak opps False False
 
 # theory 
 ganktheory aerie-peak theory False True

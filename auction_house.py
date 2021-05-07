@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import time
 import urllib
 import pymongo
 import threading
@@ -33,17 +32,17 @@ if ah_data is not None:
         db['auction_house'].insert_one(item)
 
 new_items = []
-for item in db['auction_house'].distinct('item.id'):
-    if item not in db['items'].distinct('id'):
+distinct_ah = db['auction_house'].distinct('item.id')
+distinct_item = db['items'].distinct('id')
+for item in distinct_ah:
+    if item not in distinct_item:
         new_items.append(str(item))
 
-for _ in range(10):
+while len(new_items) > 0:
     threads = []
-    for _ in range(50):
-        item_n = str(new_items.pop())
-        t = threading.Thread(target=get_item, args=[item_n])
-        t.start()
-        threads.append(t)
-    for thread in threads:
-        thread.join()
-    time.sleep(3)
+    item_n = str(new_items.pop())
+    t = threading.Thread(target=get_item, args=[item_n])
+    t.start()
+    threads.append(t)
+for thread in threads:
+    thread.join()
