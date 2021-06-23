@@ -31,7 +31,6 @@ else:
 for period in range(start_period, current_period + 1):
     for dungeon_index in dungeon_indexes['dungeons']:
         insert_me = blizzard.game_mythic_keystone_leaderboard(dungeon_index['id'], period)
-        insert_me['dungeon_time'] =  dungeon_times[dungeon_index['name']]
         if collection.find_one({'period': period, 'map_challenge_mode_id': dungeon_index['id']}):
             print('replacing {} : {}'.format(period, dungeon_index['name']))
             collection.replace_one({
